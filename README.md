@@ -1,6 +1,7 @@
 # discord-oauth2
 
 A really simple to use module to use discord's OAuth2 API
+
 Please check out discord's OAuth2 documentation: https://discordapp.com/developers/docs/topics/oauth2
 
 ### Installing

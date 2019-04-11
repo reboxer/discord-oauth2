@@ -1,6 +1,6 @@
 # discord-oauth2
 
-A really simple to use module to use discord's OAuth2 API
+A really simple to use module to use discord's OAuth2 API.
 
 Please check out discord's OAuth2 documentation: https://discordapp.com/developers/docs/topics/oauth2
 
@@ -28,6 +28,12 @@ latencyThreshold: The average request latency at which the RequestHandler will s
 
 ratelimiterOffset: A number of milliseconds to offset the ratelimit timing calculations by
 ```
+
+### Events
+
+In the Eris Library, client extends the `events` modules and the client is passed to the RequestHandler so it's able to emit events, this modified RequestHandler extends `events` so it can emit the same events even if no client is passed.
+
+There are only two events, `debug` and `warn`.
 
 ### Methods
 
@@ -71,6 +77,7 @@ Takes two parameters, the first one is the access_token from the user, the secon
 Returns a promise which resolves in an empty object if successful.
 
 Example with credentials included:
+
 ```js
 const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2();
@@ -135,6 +142,39 @@ oauth.getUserGuilds(access_token).then(console.log);
         "permissions": 36953089
     }
 */
+```
+
+#### addMember()
+
+Only takes an object with the following properties:
+
+`access_token`: The user access token
+
+`bot_token`: The token of the bot used to authenticate
+
+`guildID`: The ID of the guild to join
+
+`userID`: The ID of the user to be added to the guild
+
+Returns a member object if the user wasn't part of the guild, else, returns an empty string (length 0).
+
+Example:
+
+```js
+const DiscordOauth2 = require("discord-oauth2");
+const oauth = new DiscordOauth2();
+
+oauth.addMember({
+
+    access_token: "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF",
+
+    bot_token: "NDgyMjM4ODQzNDI1MjU5NTIz.XK93JQ.bnLsc71_DGum-Qnymb4T5F6kGY8",
+
+    guild_ID: "216488324594438692",
+
+    user_ID: "80351110224678912"
+
+}).then(console.log); // Member object or empty string
 ```
 
 ### Contributing

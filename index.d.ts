@@ -15,15 +15,15 @@ declare module "discord-oauth2" {
             code: string,
             redirect_uri: string,
             scope: string
-        }): Promise<object>;
+        }): Promise<any>;
         public revokeToken(access_token: string, credentials: string): Promise<string>;
-        public getUser(access_token: string): Promise<object>;
-        public getUserGuilds(access_token: string): Promise<object>;
+        public getUser(access_token: string): Promise<any>;
+        public getUserGuilds(access_token: string): Promise<any>;
         public addMember(data: {
             access_token: string,
             bot_token: string,
             guild_ID: string,
             user_ID: string,
-        }): Promise<object | string>
+        }): Promise<any>
     }
 }

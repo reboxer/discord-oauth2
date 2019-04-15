@@ -144,6 +144,30 @@ oauth.getUserGuilds(access_token).then(console.log);
 */
 ```
 
+#### getUserConnections()
+
+Only takes one parameter which is the user's access token.
+
+Returns a list of [connection](https://discordapp.com/developers/docs/resources/user#connection-object) objects. Requires the `connections` OAuth2 scope.
+
+```js
+const DiscordOauth2 = require("discord-oauth2");
+const oauth = new DiscordOauth2();
+
+const access_token = "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF";
+
+oauth.getUserConnections(access_token).then(console.log);
+/*
+    [ { verified: true,
+        name: 'epicusername',
+        show_activity: true,
+        friend_sync: false,
+        type: 'twitch',
+        id: '31244565',
+        visibility: 1 } ]
+*/
+```
+
 #### addMember()
 
 Only takes an object with the following properties:

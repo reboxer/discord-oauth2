@@ -19,6 +19,7 @@ declare module "discord-oauth2" {
         public revokeToken(access_token: string, credentials: string): Promise<string>;
         public getUser(access_token: string): Promise<any>;
         public getUserGuilds(access_token: string): Promise<any>;
+        public getUserConnections(access_token: string): Promise<any>;
         public addMember(data: {
             access_token: string,
             bot_token: string,

@@ -1,6 +1,6 @@
 {
   "name": "discord-oauth2",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Easily interact with discord's oauth2 API",
   "main": "index.js",
   "directories": {
@@ -19,7 +19,7 @@
     "discordapp",
     "oauth2"
   ],
-  "author": "legendarylol",
+  "author": "reboxer",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/reboxer/discord-oauth2/issues"

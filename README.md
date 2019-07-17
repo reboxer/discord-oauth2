@@ -1,4 +1,4 @@
-# discord-oauth2
+# discord-oauth2 [![NPM version](https://img.shields.io/npm/v/discord-oauth2.svg?style=flat-square)](https://www.npmjs.com/package/discord-oauth2)
 
 A really simple to use module to use discord's OAuth2 API.
 
@@ -16,17 +16,18 @@ Two parameters are passed to the class constructor:
 
 #### Options
 
-Since the module uses a modified version of [Eris](https://github.com/abalabahaha/eris) request handler, it takes the same options, all of them default to the default
-Eris Client options if no options are passed.
+Since the module uses a modified version of [Eris](https://github.com/abalabahaha/eris) request handler, it takes the same options, all of them default to the default Eris Client options if no options are passed.
 
 The first parameter can be omitted and a second parameter, the Eris Client, can be passed to use the same options as your Client.
 
 ```
-requestTimeout: A number of milliseconds before requests are considered timed out
+requestTimeout: A number of milliseconds before requests are considered timed out.
 
-latencyThreshold: The average request latency at which the RequestHandler will start emitting latency errors
+latencyThreshold: The average request latency at which the RequestHandler will start emitting latency errors.
 
-ratelimiterOffset: A number of milliseconds to offset the ratelimit timing calculations by
+ratelimiterOffset: A number of milliseconds to offset the ratelimit timing calculations by.
+
+credentials: Base64 encoding of the UTF-8 encoded credentials string of your application, you can pass this in the constructor to not pass it every time you want to use the [revokeToken](#revokeToken()) method.
 ```
 
 ### Events
@@ -82,9 +83,9 @@ Example with credentials included:
 const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2();
 
-const clientID = "496357551512441271",
-      client_secret = "cKlFh_71_OXfGVN1hmArPnL8SfKF41kA",
-      access_token = "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF";
+const clientID = "496357551512441271";
+const client_secret = "cKlFh_71_OXfGVN1hmArPnL8SfKF41kA";
+const access_token = "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF";
 
 const Base64 = require("js-base64").base64;
 // note: You must encode your client ID along with your client secret string including the colon in between
@@ -172,13 +173,13 @@ oauth.getUserConnections(access_token).then(console.log);
 
 Only takes an object with the following properties:
 
-`access_token`: The user access token
+`access_token`: The user access token.
 
-`bot_token`: The token of the bot used to authenticate
+`bot_token`: The token of the bot used to authenticate.
 
-`guildID`: The ID of the guild to join
+`guildID`: The ID of the guild to join.
 
-`userID`: The ID of the user to be added to the guild
+`userID`: The ID of the user to be added to the guild.
 
 Returns a member object if the user wasn't part of the guild, else, returns an empty string (length 0).
 
@@ -189,15 +190,10 @@ const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2();
 
 oauth.addMember({
-
     access_token: "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF",
-
     bot_token: "NDgyMjM4ODQzNDI1MjU5NTIz.XK93JQ.bnLsc71_DGum-Qnymb4T5F6kGY8",
-
     guild_ID: "216488324594438692",
-
     user_ID: "80351110224678912"
-
 }).then(console.log); // Member object or empty string
 ```
 

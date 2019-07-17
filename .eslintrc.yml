@@ -12,11 +12,4 @@ rules:
     "allowTemplateLiterals": true
   }]
   object-curly-spacing: ["error", "always"]
-  space-unary-ops: [error, {
-    words: true,
-    nonwords: false,
-      overrides: {
-        "!": true,
-        "!!": true
-      }
-  }]
+  eol-last: ["error", "always"]

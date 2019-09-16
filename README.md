@@ -91,7 +91,7 @@ const Base64 = require("js-base64").base64;
 // note: You must encode your client ID along with your client secret string including the colon in between
 const credentials = Base64(`${clientID}:${client_secret}`); // NDkwNTU3NTkxNTQyNDMxNzc1OmNLbG9oXzc4X09YV0dWTjFobU9ycm5MOFNmS0Y0MWt3
 
-oauth.revokeToken(token, credentials).then(console.log); // {}
+oauth.revokeToken(access_token, credentials).then(console.log); // {}
 ```
 
 

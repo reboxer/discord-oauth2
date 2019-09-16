@@ -1,3 +1,3 @@
 "use strict";
-const oauth = require("./lib/oauth");
-module.exports = oauth;
+const OAuth = require("./lib/OAuth");
+module.exports = OAuth;

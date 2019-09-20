@@ -181,6 +181,14 @@ Only takes an object with the following properties:
 
 `userID`: The ID of the user to be added to the guild.
 
+`nickname`: Value to set users nickname to.
+
+`roles`: Array of role ids the member is assigned.
+
+`mute`: Whether the user is muted in voice channels.
+
+`deaf`: Whether the user is deafened in voice channels.
+
 Returns a member object if the user wasn't part of the guild, else, returns an empty string (length 0).
 
 Example:
@@ -194,7 +202,30 @@ oauth.addMember({
     bot_token: "NDgyMjM4ODQzNDI1MjU5NTIz.XK93JQ.bnLsc71_DGum-Qnymb4T5F6kGY8",
     guild_ID: "216488324594438692",
     user_ID: "80351110224678912"
+
+    nickname: "george michael",
+    roles: ["624615851966070786"],
+    mute: true,
+    deaf: true
 }).then(console.log); // Member object or empty string
+
+/*
+{
+  nick: "george michael",
+  user: {
+    username: 'some username',
+    discriminator: '0001',
+    id: '421610529323943943',
+    avatar: null
+  },
+  roles: [ '324615841966570766' ],
+  premium_since: null,
+  deaf: false,
+  mute: false,
+  joined_at: '2019-09-20T14:44:12.603123+00:00'
+}
+*/
+
 ```
 
 ### Contributing

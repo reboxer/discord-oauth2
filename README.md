@@ -181,6 +181,8 @@ Only takes an object with the following properties:
 
 `userID`: The ID of the user to be added to the guild.
 
+Optional properties (the above ones are required):
+
 `nickname`: Value to set users nickname to.
 
 `roles`: Array of role ids the member is assigned.

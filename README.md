@@ -12,13 +12,11 @@ npm install discord-oauth2
 
 ### Class constructor
 
-Two parameters are passed to the class constructor:
+One parameter is passed to the class constructor:
 
 #### Options
 
 Since the module uses a modified version of [Eris](https://github.com/abalabahaha/eris) request handler, it takes the same options, all of them default to the default Eris Client options if no options are passed.
-
-The first parameter can be omitted and a second parameter, the Eris Client, can be passed to use the same options as your Client.
 
 ```
 requestTimeout: A number of milliseconds before requests are considered timed out.
@@ -27,12 +25,12 @@ latencyThreshold: The average request latency at which the RequestHandler will s
 
 ratelimiterOffset: A number of milliseconds to offset the ratelimit timing calculations by.
 
-credentials: Base64 encoding of the UTF-8 encoded credentials string of your application, you can pass this in the constructor to not pass it every time you want to use the [revokeToken](#revokeToken()) method.
+credentials: Base64 encoding of the UTF-8 encoded credentials string of your application, you can pass this in the constructor to not pass it every time you want to use the revokeToken() method.
 ```
 
 ### Events
 
-In the Eris Library, client extends the `events` modules and the client is passed to the RequestHandler so it's able to emit events, this modified RequestHandler extends `events` so it can emit the same events even if no client is passed.
+In the Eris Library, client extends the `events` modules and the client is passed to the RequestHandler so it's able to emit events, this modified RequestHandler extends `events` so it can emit the same events.
 
 There are only two events, `debug` and `warn`.
 
@@ -200,10 +198,10 @@ const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2();
 
 oauth.addMember({
-    access_token: "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF",
-    bot_token: "NDgyMjM4ODQzNDI1MjU5NTIz.XK93JQ.bnLsc71_DGum-Qnymb4T5F6kGY8",
-    guild_ID: "216488324594438692",
-    user_ID: "80351110224678912"
+    accessToken: "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF",
+    botToken: "NDgyMjM4ODQzNDI1MjU5NTIz.XK93JQ.bnLsc71_DGum-Qnymb4T5F6kGY8",
+    guildId: "216488324594438692",
+    userId: "80351110224678912"
 
     nickname: "george michael",
     roles: ["624615851966070786"],
@@ -222,8 +220,8 @@ oauth.addMember({
   },
   roles: [ '324615841966570766' ],
   premium_since: null,
-  deaf: false,
-  mute: false,
+  deaf: true,
+  mute: true,
   joined_at: '2019-09-20T14:44:12.603123+00:00'
 }
 */

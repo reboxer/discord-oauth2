@@ -69,10 +69,10 @@ declare class OAuth {
     tokenRequest(object: {
         code: string,
         scope: string,
-        client_id: string,
-        grant_type: string,
-        redirect_uri: string,
-        client_secret: string
+        clientId: string,
+        grantType: string,
+        redirectUri: string,
+        clientSecret: string
     }): Promise<TokenRequestResult>;
     revokeToken(access_token: string, credentials: string): Promise<string>;
     getUser(access_token: string): Promise<User>;

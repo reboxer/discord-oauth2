@@ -49,22 +49,25 @@ const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2();
 
 oauth.tokenRequest({
-        client_id: "your client ID",
-        client_secret: "your client secret",
-        grant_type: "authorization_code",
-        code: "query code",
-        redirect_uri: "http://localhost/",
-        scope: "identify guilds"
-    }).then(console.log);
-    // If the request was successful
+    clientId: "your client ID",
+    clientSecret: "your client secret",
+
+    code: "query code",
+    scope: "identify guilds",
+    grantType: "authorization_code",
+    
+    redirectUri: "http://localhost/callback"
+}).then(console.log)
+
+// If the request was succesful
 /*
-        {
-            "access_token": "6qrZcUqja7812RVdnEKjpzOL4CvHBFG",
-            "token_type": "Bearer",
-            "expires_in": 604800,
-            "refresh_token": "D43f5y0ahjqew82jZ4NViEr2YafMKhue",
-            "scope": "identify"
-        }
+    {
+        "access_token": "6qrZcUqja7812RVdnEKjpzOL4CvHBFG",
+        "token_type": "Bearer",
+        "expires_in": 604800,
+        "refresh_token": "D43f5y0ahjqew82jZ4NViEr2YafMKhue",
+        "scope": "identify guilds"
+    }
 */
 ```
 
@@ -86,7 +89,7 @@ const client_secret = "cKlFh_71_OXfGVN1hmArPnL8SfKF41kA";
 const access_token = "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF";
 
 const Base64 = require("js-base64").base64;
-// note: You must encode your client ID along with your client secret string including the colon in between
+// You must encode your client ID along with your client secret string including the colon in between
 const credentials = Base64(`${clientID}:${client_secret}`); // NDkwNTU3NTkxNTQyNDMxNzc1OmNLbG9oXzc4X09YV0dWTjFobU9ycm5MOFNmS0Y0MWt3
 
 oauth.revokeToken(access_token, credentials).then(console.log); // {}
@@ -210,20 +213,20 @@ oauth.addMember({
 }).then(console.log); // Member object or empty string
 
 /*
-{
-  nick: "george michael",
-  user: {
-    username: 'some username',
-    discriminator: '0001',
-    id: '421610529323943943',
-    avatar: null
-  },
-  roles: [ '324615841966570766' ],
-  premium_since: null,
-  deaf: true,
-  mute: true,
-  joined_at: '2019-09-20T14:44:12.603123+00:00'
-}
+    {
+        nick: "george michael",
+        user: {
+        username: 'some username',
+        discriminator: '0001',
+        id: '421610529323943943',
+        avatar: null
+        },
+    roles: [ '324615841966570766' ],
+    premium_since: null,
+    deaf: true,
+    mute: true,
+    joined_at: '2019-09-20T14:44:12.603123+00:00'
+    }
 */
 
 ```

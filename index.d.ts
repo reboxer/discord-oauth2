@@ -1,3 +1,5 @@
+import { EventEmitter } from "events";
+
 interface User {
     id: string,
     avatar: string | null | undefined,
@@ -69,13 +71,14 @@ interface PartialGuild {
     permissions?: number,
 }
 
-declare class OAuth {
+declare class OAuth extends EventEmitter {
     constructor(options?: {
         credentials?: string,
         requestTimeout?: number,
         latencyThreshold?: number,
         ratelimiterOffset?: number,
     });
+    on(event: "debug" | "warn", listener: (message: string) => void): this;
     tokenRequest(data: {
         code: string,
         scope: string,

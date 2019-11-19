@@ -71,7 +71,6 @@ oauth.tokenRequest({
 */
 ```
 
-
 #### revokeToken()
 
 Takes two parameters, the first one is the access_token from the user, the second is a Base64 encoding of the UTF-8 encoded credentials string of your application.
@@ -94,7 +93,6 @@ const credentials = Base64(`${clientID}:${client_secret}`); // NDkwNTU3NTkxNTQyN
 
 oauth.revokeToken(access_token, credentials).then(console.log); // {}
 ```
-
 
 #### getUser()
 
@@ -174,13 +172,13 @@ oauth.getUserConnections(access_token).then(console.log);
 
 Only takes an object with the following properties:
 
-`access_token`: The user access token.
+`accessToken`: The user access token.
 
-`bot_token`: The token of the bot used to authenticate.
+`botToken`: The token of the bot used to authenticate.
 
-`guildID`: The ID of the guild to join.
+`guildId`: The ID of the guild to join.
 
-`userID`: The ID of the user to be added to the guild.
+`userId`: The ID of the user to be added to the guild.
 
 Optional properties (the above ones are required):
 
@@ -204,7 +202,7 @@ oauth.addMember({
     accessToken: "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF",
     botToken: "NDgyMjM4ODQzNDI1MjU5NTIz.XK93JQ.bnLsc71_DGum-Qnymb4T5F6kGY8",
     guildId: "216488324594438692",
-    userId: "80351110224678912"
+    userId: "80351110224678912",
 
     nickname: "george michael",
     roles: ["624615851966070786"],
@@ -214,18 +212,18 @@ oauth.addMember({
 
 /*
     {
-        nick: "george michael",
+        nick: 'george michael',
         user: {
         username: 'some username',
         discriminator: '0001',
         id: '421610529323943943',
         avatar: null
         },
-    roles: [ '324615841966570766' ],
-    premium_since: null,
-    deaf: true,
-    mute: true,
-    joined_at: '2019-09-20T14:44:12.603123+00:00'
+        roles: [ '324615841966570766' ],
+        premium_since: null,
+        deaf: true,
+        mute: true,
+        joined_at: '2019-09-20T14:44:12.603123+00:00'
     }
 */
 

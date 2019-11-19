@@ -13,6 +13,16 @@ interface User {
     premium_type?: number,
 }
 
+interface Member {
+    nick: string | null | undefined,
+    user: User,
+    deaf: boolean,
+    mute: boolean,
+    roles: string[],
+    joined_at: number,
+    premium_since: number | null | undefined,
+}
+
 interface Integration {
     id: string,
     user: User,
@@ -21,7 +31,7 @@ interface Integration {
     account: {
         id: string,
         name: string,
-    }
+    },
     enabled: boolean,
     role_id: string,
     syncing: boolean,
@@ -55,7 +65,7 @@ interface PartialGuild {
     name: string,
     icon: string | null | undefined,
     owner: boolean,
-    features: string[];
+    features: string[],
     permissions?: number,
 }
 
@@ -64,15 +74,15 @@ declare class OAuth {
         credentials?: string,
         requestTimeout?: number,
         latencyThreshold?: number,
-        ratelimiterOffset?: number
+        ratelimiterOffset?: number,
     });
-    tokenRequest(object: {
+    tokenRequest(data: {
         code: string,
         scope: string,
         clientId: string,
         grantType: string,
         redirectUri: string,
-        clientSecret: string
+        clientSecret: string,
     }): Promise<TokenRequestResult>;
     revokeToken(access_token: string, credentials: string): Promise<string>;
     getUser(access_token: string): Promise<User>;
@@ -87,8 +97,8 @@ declare class OAuth {
         userId: string,
         guildId: string,
         botToken: string,
-        accessToken: string
-    }): Promise<object | string>;
+        accessToken: string,
+    }): Promise<Member>;
 }
 
 export = OAuth;

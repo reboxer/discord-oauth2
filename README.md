@@ -1,5 +1,5 @@
-# This fork uses the `v6` API from discord
-
+## Attention!
+ This fork uses the `v6` API from discord.
 # discord-oauth2 [![NPM version](https://img.shields.io/npm/v/discord-oauth2.svg?style=flat-square)](https://www.npmjs.com/package/discord-oauth2)
 
 A really simple to use module to use discord's OAuth2 API.

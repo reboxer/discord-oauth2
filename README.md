@@ -85,11 +85,11 @@ const oauth = new DiscordOauth2();
 
 const clientID = "496357551512441271";
 const client_secret = "cKlFh_71_OXfGVN1hmArPnL8SfKF41kA";
+
 const access_token = "2qRZcUqUa9816RVnnEKRpzOL2CvHBgF";
 
-const Base64 = require("js-base64").base64;
-// You must encode your client ID along with your client secret string including the colon in between
-const credentials = Base64(`${clientID}:${client_secret}`); // NDkwNTU3NTkxNTQyNDMxNzc1OmNLbG9oXzc4X09YV0dWTjFobU9ycm5MOFNmS0Y0MWt3
+// You must encode your client ID along with your client secret including the colon in between
+const credentials = Buffer.from(`${clientID}:${client_secret}`).toString("base64"); // NDk2MzU3NTUxNTEyNDQxMjcxOmNLbEZoXzcxX09YZkdWTjFobUFyUG5MOFNmS0Y0MWtB
 
 oauth.revokeToken(access_token, credentials).then(console.log); // {}
 ```

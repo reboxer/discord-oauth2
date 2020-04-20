@@ -1,0 +1,35 @@
+{
+	"env": {
+		"es6": true,
+		"node": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 2020
+	},
+	"extends": "eslint:recommended",
+	"rules": {
+		"semi": "error",
+		"no-var": "error",
+		"prefer-const": "error",
+		"keyword-spacing": "error",
+		"eqeqeq": "error",
+		"eol-last": "error",
+		"brace-style": ["error", "stroustrup"],
+		"comma-dangle": ["error", "always-multiline"],
+		"object-curly-spacing": ["error", "always"],
+
+		"quotes": ["error", "double", {
+			"allowTemplateLiterals": true
+		}],
+
+		"indent": ["error", "tab", {
+			"SwitchCase": 1,
+			"flatTernaryExpressions": true
+		}],
+
+		"object-curly-newline": ["error", {
+			"ExportDeclaration": "never",
+			"ImportDeclaration": "always"
+		}]
+	}
+}

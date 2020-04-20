@@ -80,11 +80,12 @@ declare class OAuth extends EventEmitter {
     });
     on(event: "debug" | "warn", listener: (message: string) => void): this;
     tokenRequest(data: {
-        code: string,
+        code?: string,
         scope: string,
         clientId: string,
-        grantType: string,
+        grantType: "authorization_code" | "refresh_token",
         redirectUri: string,
+        refreshToken?: string,
         clientSecret: string,
     }): Promise<TokenRequestResult>;
     revokeToken(access_token: string, credentials: string): Promise<string>;

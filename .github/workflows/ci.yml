@@ -15,5 +15,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.16.2'
+      - name: Get npm cache directory
+        id: npm-cache
+        run: |
+            echo "::set-output name=dir::$(npm config get cache)"
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies with npm
+        run: npm ci
       - name: lint
         run: npm run-script lint

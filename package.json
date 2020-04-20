@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/reboxer/discord-oauth2/issues"
   },
-  "homepage": "https://github.com/reboxer/discord-oauth2#readme"
+  "homepage": "https://github.com/reboxer/discord-oauth2#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
 }

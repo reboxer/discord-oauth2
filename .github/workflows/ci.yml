@@ -2,17 +2,17 @@ name: CI
 
 on: [push, pull_request]
 
-	lint:
-		name: Lint
+  lint:
+    name: Lint
 
-		runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-		steps:
-			- name: Checkout git repository
-			uses: actions/checkout@v2
-			- name: Setup Node.js for use with Actions
-			uses: actions/setup-node@v1
-			with:
-				node-version: '12.16.2'
-			- name: lint
-			run: npm run-script lint
+    steps:
+      - name: Checkout git repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js for use with Actions
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.16.2'
+      - name: lint
+        run: npm run-script lint

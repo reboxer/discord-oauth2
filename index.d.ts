@@ -72,27 +72,30 @@ interface PartialGuild {
 }
 
 declare class OAuth extends EventEmitter {
-    constructor(options?: {
+    constructor(opts?: {
+        clientId?: string,
+        redirectUri?: string,
         credentials?: string,
+        clientSecret?: string,
         requestTimeout?: number,
         latencyThreshold?: number,
         ratelimiterOffset?: number,
     });
     on(event: "debug" | "warn", listener: (message: string) => void): this;
-    tokenRequest(data: {
+    tokenRequest(opts: {
         code?: string,
-        scope: string,
-        clientId: string,
+        scope: string[] | string,
+        clientId?: string,
         grantType: "authorization_code" | "refresh_token",
-        redirectUri: string,
+        redirectUri?: string,
         refreshToken?: string,
-        clientSecret: string,
+        clientSecret?: string,
     }): Promise<TokenRequestResult>;
-    revokeToken(access_token: string, credentials: string): Promise<string>;
+    revokeToken(access_token: string, credentials?: string): Promise<string>;
     getUser(access_token: string): Promise<User>;
     getUserGuilds(access_token: string): Promise<PartialGuild[]>;
     getUserConnections(access_token: string): Promise<Connection[]>;
-    addMember(data: {
+    addMember(opts: {
         deaf?: boolean,
         mute?: boolean,
         roles?: string[],
@@ -103,6 +106,13 @@ declare class OAuth extends EventEmitter {
         botToken: string,
         accessToken: string,
     }): Promise<Member>;
+    generateAuthUrl(opts: {
+        scope: string[] | string,
+        state?: string,
+        clientId?: string,
+        redirectUri?: string,
+        responseType?: "code" | "token",
+    })
 }
 
 export = OAuth;

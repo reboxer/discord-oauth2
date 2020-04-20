@@ -13,6 +13,6 @@ on: [push, pull_request]
 			- name: Setup Node.js for use with Actions
 			uses: actions/setup-node@v1
 			with:
-				node-version: '12.16.1'
+				node-version: '12.16.2'
 			- name: lint
 			run: npm run-script lint

@@ -72,6 +72,10 @@ interface PartialGuild {
 }
 
 declare class OAuth extends EventEmitter {
+    public client_id: string
+    public client_secret: string
+    public credentials: string
+    public redirect_uri: string
     constructor(opts?: {
         clientId?: string,
         redirectUri?: string,
@@ -112,7 +116,7 @@ declare class OAuth extends EventEmitter {
         clientId?: string,
         redirectUri?: string,
         responseType?: "code" | "token",
-    })
+    }): string
 }
 
 export = OAuth;

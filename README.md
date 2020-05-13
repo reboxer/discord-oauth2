@@ -286,6 +286,7 @@ Only takes an object with the following properties:
 `state`: A unique cryptographically secure string (https://discordapp.com/developers/docs/topics/oauth2#state-and-security).
 
 ```js
+const crypto = require('crypto')
 const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2({
 	clientId: "332269999912132097",

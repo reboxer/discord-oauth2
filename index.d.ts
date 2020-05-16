@@ -112,7 +112,7 @@ declare class OAuth extends EventEmitter {
         clientId?: string,
         redirectUri?: string,
         responseType?: "code" | "token",
-    })
+    }): string;
 }
 
 export = OAuth;

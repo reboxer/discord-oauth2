@@ -2,7 +2,7 @@
 
 A really simple to use module to use discord's OAuth2 API.
 
-Please check out discord's OAuth2 documentation: https://discordapp.com/developers/docs/topics/oauth2
+Please check out discord's OAuth2 documentation: https://discord.com/developers/docs/topics/oauth2
 
 ### Installing
 
@@ -68,7 +68,7 @@ Only takes an object with the following properties:
 
 Returns a promise which resolves in an object with the access token.
 
-Please refer to discord's OAuth2 [documentation](https://discordapp.com/developers/docs/topics/oauth2#authorization-code-grant-access-token-exchange-example) for the parameters needed.
+Please refer to discord's OAuth2 [documentation](https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-access-token-exchange-example) for the parameters needed.
 
 ```js
 const DiscordOauth2 = require("discord-oauth2");
@@ -139,7 +139,7 @@ oauth.revokeToken(access_token, credentials).then(console.log); // {}
 
 Only takes one parameter which is the user's access token.
 
-Returns the [user](https://discordapp.com/developers/docs/resources/user#user-object) object of the requester's account, this requires the `identify` scope, which will return the object without an email, and optionally the `email` scope, which returns the object with an email.
+Returns the [user](https://discord.com/developers/docs/resources/user#user-object) object of the requester's account, this requires the `identify` scope, which will return the object without an email, and optionally the `email` scope, which returns the object with an email.
 
 ```js
 const DiscordOauth2 = require("discord-oauth2");
@@ -165,7 +165,7 @@ oauth.getUser(access_token).then(console.log);
 
 Only takes one parameter which is the user's access token.
 
-Returns a list of partial [guild](https://discordapp.com/developers/docs/resources/guild#guild-object) objects the current user is a member of. Requires the `guilds` scope.
+Returns a list of partial [guild](https://discord.com/developers/docs/resources/guild#guild-object) objects the current user is a member of. Requires the `guilds` scope.
 
 ```js
 const DiscordOauth2 = require("discord-oauth2");
@@ -189,7 +189,7 @@ oauth.getUserGuilds(access_token).then(console.log);
 
 Only takes one parameter which is the user's access token.
 
-Returns a list of [connection](https://discordapp.com/developers/docs/resources/user#connection-object) objects. Requires the `connections` OAuth2 scope.
+Returns a list of [connection](https://discord.com/developers/docs/resources/user#connection-object) objects. Requires the `connections` OAuth2 scope.
 
 ```js
 const DiscordOauth2 = require("discord-oauth2");
@@ -283,7 +283,7 @@ Only takes an object with the following properties:
 
 `responseType`: The response type, either code or token (token is for client-side web applications only). Defaults to code.
 
-`state`: A unique cryptographically secure string (https://discordapp.com/developers/docs/topics/oauth2#state-and-security).
+`state`: A unique cryptographically secure string (https://discord.com/developers/docs/topics/oauth2#state-and-security).
 
 ```js
 const crypto = require('crypto')
@@ -300,7 +300,7 @@ const url = oauth.generateAuthUrl({
 });
 
 console.log(url);
-// https://discordapp.com/api/oauth2/authorize?client_id=332269999912132097&redirect_uri=http%3A%2F%2Flocalhost%2Fcallback&response_type=code&scope=identify%20guilds&state=132054f372bfca771de3dfe54aaacece
+// https://discord.com/api/oauth2/authorize?client_id=332269999912132097&redirect_uri=http%3A%2F%2Flocalhost%2Fcallback&response_type=code&scope=identify%20guilds&state=132054f372bfca771de3dfe54aaacece
 
 ```
 

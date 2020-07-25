@@ -30,6 +30,8 @@ ratelimiterOffset: A number of milliseconds to offset the ratelimit timing calcu
 
 Others, you can pass these options to the class constructor so you don't have to pass them each time you call a function:
 ```
+version: The Discord API version to use. Defaults to "v7".
+
 clientId: Your application's client id.
 
 clientSecret: Your application's client secret.

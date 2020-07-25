@@ -72,6 +72,7 @@ interface PartialGuild {
 
 declare class OAuth extends EventEmitter {
 	constructor(opts?: {
+		version?: string,
 		clientId?: string,
 		redirectUri?: string,
 		credentials?: string,

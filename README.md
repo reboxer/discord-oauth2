@@ -279,6 +279,8 @@ Only takes an object with the following properties:
 
 `clientId`: Your application's client id. Can be omitted if provided on the client constructor.
 
+`prompt`: Controls how existing authorizations are handled, either consent or none (for passthrough scopes authorization is always required). Defaults to consent.
+
 `scope`: The scopes requested in your authorization url, can be either a space-delimited string of scopes, or an array of strings containing scopes.
 
 `redirectUri`: Your URL redirect uri. Can be omitted if provided on the client constructor.

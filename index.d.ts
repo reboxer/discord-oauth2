@@ -109,6 +109,7 @@ declare class OAuth extends EventEmitter {
 		scope: string[] | string,
 		state?: string,
 		clientId?: string,
+		prompt?: "consent" | "none",
 		redirectUri?: string,
 		responseType?: "code" | "token",
 	}): string;

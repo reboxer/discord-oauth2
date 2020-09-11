@@ -68,6 +68,7 @@ interface PartialGuild {
 	owner: boolean;
 	features: string[];
 	permissions?: number;
+	permissions_new?: string;
 }
 
 declare class OAuth extends EventEmitter {

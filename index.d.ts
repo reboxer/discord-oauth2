@@ -112,6 +112,9 @@ declare class OAuth extends EventEmitter {
 		prompt?: "consent" | "none",
 		redirectUri?: string,
 		responseType?: "code" | "token",
+		permissions?: string | number,
+		guild_id?: string,
+		disable_guild_select?: boolean,
 	}): string;
 }
 

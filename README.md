@@ -290,11 +290,11 @@ Only takes an object with the following properties:
 
 `state`: A unique cryptographically secure string (https://discord.com/developers/docs/topics/oauth2#state-and-security).
 
-`permissions`: The permissions for the bot invite (only with bot scope).
+`permissions`: The permissions number for the bot invite (only with bot scope) (https://discord.com/developers/docs/topics/permissions).
 
-`guild_id`: The guild id to pre-fill the bot invite (only with bot scope).
+`guildId`: The guild id to pre-fill the bot invite (only with bot scope).
 
-`disable_guild_select`: Disallows the user from changing the guild for the bot invite, either true or false (only with bot scope).
+`disableGuildSelect`: Disallows the user from changing the guild for the bot invite, either true or false (only with bot scope).
 
 ```js
 const crypto = require('crypto')

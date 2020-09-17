@@ -182,7 +182,8 @@ oauth.getUserGuilds(access_token).then(console.log);
 		"name": "1337 Krew",
 		"icon": "8342729096ea3675442027381ff50dfe",
 		"owner": true,
-		"permissions": 36953089
+		"permissions": 36953089,
+		"permissions_new": "36953089"
 	}
 */
 ```
@@ -279,7 +280,7 @@ Only takes an object with the following properties:
 
 `clientId`: Your application's client id. Can be omitted if provided on the client constructor.
 
-`prompt`: Controls how existing authorizations are handled, either consent or none (for passthrough scopes authorization is always required). Defaults to consent.
+`prompt`: Controls how existing authorizations are handled, either consent or none (for passthrough scopes authorization is always required).
 
 `scope`: The scopes requested in your authorization url, can be either a space-delimited string of scopes, or an array of strings containing scopes.
 
@@ -288,6 +289,12 @@ Only takes an object with the following properties:
 `responseType`: The response type, either code or token (token is for client-side web applications only). Defaults to code.
 
 `state`: A unique cryptographically secure string (https://discord.com/developers/docs/topics/oauth2#state-and-security).
+
+`permissions`: The permissions number for the bot invite (only with bot scope) (https://discord.com/developers/docs/topics/permissions).
+
+`guildId`: The guild id to pre-fill the bot invite (only with bot scope).
+
+`disableGuildSelect`: Disallows the user from changing the guild for the bot invite, either true or false (only with bot scope).
 
 ```js
 const crypto = require('crypto')

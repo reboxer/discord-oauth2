@@ -47,7 +47,7 @@ interface Connection {
 	name: string;
 	revoked?: string;
 	verified: string;
-	visibility: string;
+	visibility: 0 | 1;
 	friend_sync: boolean;
 	show_activity: boolean;
 	integrations?: Integration[];

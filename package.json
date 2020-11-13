@@ -1,6 +1,6 @@
 {
   "name": "discord-oauth2",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "Easily interact with discord's oauth2 API",
   "main": "index.js",
   "scripts": {

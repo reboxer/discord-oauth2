@@ -2,55 +2,58 @@ import { EventEmitter } from "events";
 
 interface User {
 	id: string;
-	avatar: string | null | undefined;
 	username: string;
 	discriminator: string;
+	avatar: string | null | undefined;
 	bot?: boolean;
-	email?: string;
-	flags?: number;
+	mfa_enabled?: string;
 	locale?: string;
 	verified?: boolean;
-	mfa_enabled?: string;
+	email?: string;
+	flags?: number;
 	premium_type?: number;
 }
 
 interface Member {
-	nick: string | null | undefined;
 	user: User;
-	deaf: boolean;
-	mute: boolean;
+	nick: string | null | undefined;
 	roles: string[];
 	joined_at: number;
 	premium_since: number | null | undefined;
+	deaf: boolean;
+	mute: boolean;
 }
 
 interface Integration {
 	id: string;
-	user: User;
 	name: string;
 	type: string;
+	enabled: boolean;
+	syncing: boolean;
+	role_id: string;
+	
+	// enable_emoticons?
+
+	expire_behavior: number;
+	expire_grace_period: number;
+	user: User;
 	account: {
 		id: string;
 		name: string;
 	};
-	enabled: boolean;
-	role_id: string;
-	syncing: boolean;
 	synced_at: string;
-	expire_behavior: number;
-	expire_grace_period: number;
 }
 
 interface Connection {
 	id: string;
-	type: string;
 	name: string;
+	type: string;
 	revoked?: string;
+	integrations?: Integration[];
 	verified: string;
-	visibility: string;
 	friend_sync: boolean;
 	show_activity: boolean;
-	integrations?: Integration[];
+	visibility: string;
 }
 
 interface TokenRequestResult {
@@ -66,8 +69,8 @@ interface PartialGuild {
 	name: string;
 	icon: string | null | undefined;
 	owner: boolean;
-	features: string[];
 	permissions?: number;
+	features: string[];
 	permissions_new?: string;
 }
 

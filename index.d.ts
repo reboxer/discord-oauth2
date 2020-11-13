@@ -5,25 +5,26 @@ interface User {
 	username: string;
 	discriminator: string;
 	avatar: string | null | undefined;
-	bot?: boolean;
-	mfa_enabled?: string;
+	mfa_enabled?: true;
 	locale?: string;
 	verified?: boolean;
-	email?: string;
+	email?: string | null | undefined;
 	flags?: number;
 	premium_type?: number;
+	public_flags?: number;
 }
 
 interface Member {
-	user: User;
+	user?: User;
 	nick: string | null | undefined;
 	roles: string[];
 	joined_at: number;
-	premium_since: number | null | undefined;
+	premium_since?: number | null | undefined;
 	deaf: boolean;
 	mute: boolean;
 }
 
+// This is not accurate as discord sends a partial object
 interface Integration {
 	id: string;
 	name: string;
@@ -31,17 +32,18 @@ interface Integration {
 	enabled: boolean;
 	syncing: boolean;
 	role_id: string;
-	
-	// enable_emoticons?
-
-	expire_behavior: number;
+	enable_emoticons?: boolean;
+	expire_behavior: 0 | 1;
 	expire_grace_period: number;
-	user: User;
+	user?: User;
 	account: {
 		id: string;
 		name: string;
 	};
-	synced_at: string;
+	synced_at: number;
+	subscriber_count: number;	
+	revoked: boolean;
+	application?: Application;
 }
 
 interface Connection {
@@ -50,10 +52,19 @@ interface Connection {
 	type: string;
 	revoked?: string;
 	integrations?: Integration[];
-	verified: string;
+	verified: boolean;
 	friend_sync: boolean;
 	show_activity: boolean;
-	visibility: string;
+	visibility: 0 | 1;
+}
+
+interface Application {
+	id: string;
+	name: string;
+	icon: string | null | undefined;
+	description: string;
+	summary: string;
+	bot?: User;
 }
 
 interface TokenRequestResult {
@@ -68,7 +79,7 @@ interface PartialGuild {
 	id: string;
 	name: string;
 	icon: string | null | undefined;
-	owner: boolean;
+	owner?: boolean;
 	permissions?: number;
 	features: string[];
 	permissions_new?: string;

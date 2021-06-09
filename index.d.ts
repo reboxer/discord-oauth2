@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 
-interface User {
+export interface User {
 	id: string;
 	username: string;
 	discriminator: string;
@@ -14,7 +14,7 @@ interface User {
 	public_flags?: number;
 }
 
-interface Member {
+export interface Member {
 	user?: User;
 	nick: string | null | undefined;
 	roles: string[];
@@ -25,7 +25,7 @@ interface Member {
 }
 
 // This is not accurate as discord sends a partial object
-interface Integration {
+export interface Integration {
 	id: string;
 	name: string;
 	type: string;
@@ -46,7 +46,7 @@ interface Integration {
 	application?: Application;
 }
 
-interface Connection {
+export interface Connection {
 	id: string;
 	name: string;
 	type: string;
@@ -58,7 +58,7 @@ interface Connection {
 	visibility: 0 | 1;
 }
 
-interface Application {
+export interface Application {
 	id: string;
 	name: string;
 	icon: string | null | undefined;
@@ -67,7 +67,7 @@ interface Application {
 	bot?: User;
 }
 
-interface TokenRequestResult {
+export interface TokenRequestResult {
 	access_token: string;
 	token_type: string;
 	expires_in: number;
@@ -75,7 +75,7 @@ interface TokenRequestResult {
 	scope: string;
 }
 
-interface PartialGuild {
+export interface PartialGuild {
 	id: string;
 	name: string;
 	icon: string | null | undefined;
@@ -133,4 +133,4 @@ declare class OAuth extends EventEmitter {
 	}): string;
 }
 
-export = OAuth;
+export default OAuth;

@@ -1,32 +1,18 @@
-name: CI
+name: Run ESLint
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   lint:
-    name: Lint
+    name: Run ESlint
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout git repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js for use with Actions
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.16.2'
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-            echo "::set-output name=dir::$(npm config get cache)"
-      - name: Cache dependencies
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install dependencies with npm
-        run: npm ci
-      - name: lint
-        run: npm run-script lint
+      - uses: actions/checkout@v2
+      - run: yarn
+      - run: yarn run lint

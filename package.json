@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/reboxer/discord-oauth2#readme",
   "devDependencies": {
-    "eslint": "^7.13.0"
+    "eslint": "7.30.0"
   }
 }

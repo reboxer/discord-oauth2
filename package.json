@@ -6,9 +6,6 @@
   "scripts": {
     "lint": "eslint --ext .js ./ --no-error-on-unmatched-pattern && echo \"\u001b[1m\u001b[32mOK - lint\u001b[39m\u001b[22m\" || echo \"\u001b[1m\u001b[31mNot OK - lint\u001b[39m\u001b[22m\""
   },
-  "directories": {
-    "lib": "lib"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reboxer/discord-oauth2.git"

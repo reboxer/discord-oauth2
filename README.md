@@ -315,6 +315,44 @@ console.log(url);
 
 ```
 
+# Debugging
+
+By default when you log an error to the console, it will look something like this `DiscordHTTPError: 400 Bad Request on POST /api/v7/oauth2/token` followed by a very long stack trace what most of the times won't be useful (if you already know where the function is called).
+
+To easily debug any issues you are having, you can access the following properties of the error object thrown:
+
+`req`: The HTTP request sent to discord.
+
+`res`: The HTTP response sent from discord to our request.
+
+`code`: If the error is a `DiscordHTTPError`, it will be the HTTP status code of the response (same as `res.statusCode`).<br />
+If the error is a `DiscordRESTError`, it will be a [Discord API JSON error code](https://discord.com/developers/docs/topics/opcodes-and-status-codes#json-json-error-codes).
+
+`response`: An object containing properties that describe the error.<br />
+If the error is a `DiscordHTTPError`, the object will have the `error` and `error_description` properties.<br />
+If the error is a `DiscordRESTError`, the object will have the `message` and `code` (JSON error code. See `code`.) properties.
+
+`message`: If the error is a `DiscordHTTPError`, it will be a string including the status of the HTTP request and the endpoint used.<br />
+If the error is a `DiscordRESTError`, it will be a string including the error code and it's meaning.
+
+`stack`: The error stack trace.
+
+```js
+// error.response for DiscordRESTError
+{
+	message: 'Missing Permissions',
+	code: 50013
+}
+```
+
+```js
+// error.response for DiscordHTTPError
+{
+	error: 'invalid_request',
+	error_description: 'Invalid "code" in request.'
+}
+```
+
 # Contributing
 
 All contributions are welcome.

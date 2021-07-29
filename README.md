@@ -10,11 +10,11 @@ Please check out discord's OAuth2 documentation: https://discord.com/developers/
 npm install discord-oauth2
 ```
 
-### Class constructor
+# Class constructor
 
 One parameter is passed to the class constructor:
 
-#### Options
+### `Options`
 
 Since the module uses a modified version of [Eris](https://github.com/abalabahaha/eris) request handler, it takes the same options, all of them default to the default Eris Client options if no options are passed.
 
@@ -41,15 +41,15 @@ redirectUri: Your URL redirect uri.
 credentials: Base64 encoding of the UTF-8 encoded credentials string of your application, you can pass this in the constructor to not pass it every time you want to use the revokeToken() method.
 ```
 
-### Events
+# Events
 
 In the Eris Library, client extends the `events` modules and the client is passed to the RequestHandler so it's able to emit events, this modified RequestHandler extends `events` so it can emit the same events.
 
 There are only two events, `debug` and `warn`.
 
-### Methods
+# Methods
 
-#### tokenRequest()
+### `tokenRequest()`
 
 Only takes an object with the following properties:
 
@@ -117,7 +117,7 @@ oauth.tokenRequest({
 */
 ```
 
-#### revokeToken()
+### `revokeToken()`
 
 Takes two parameters, the first one is the access_token from the user, the second is a Base64 encoding of the UTF-8 encoded credentials string of your application.
 
@@ -137,7 +137,7 @@ const credentials = Buffer.from(`${clientID}:${client_secret}`).toString("base64
 oauth.revokeToken(access_token, credentials).then(console.log); // {}
 ```
 
-#### getUser()
+### `getUser()`
 
 Only takes one parameter which is the user's access token.
 
@@ -163,7 +163,7 @@ oauth.getUser(access_token).then(console.log);
 */
 ```
 
-#### getUserGuilds()
+### `getUserGuilds()`
 
 Only takes one parameter which is the user's access token.
 
@@ -188,7 +188,7 @@ oauth.getUserGuilds(access_token).then(console.log);
 */
 ```
 
-#### getUserConnections()
+### `getUserConnections()`
 
 Only takes one parameter which is the user's access token.
 
@@ -212,11 +212,11 @@ oauth.getUserConnections(access_token).then(console.log);
 */
 ```
 
-#### addMember()
+### `addMember()`
 
 Force join a user to a guild (server).
 
-Only takes an object with the following properties:
+Takes an object with the following properties:
 
 `accessToken`: The user access token.
 
@@ -272,11 +272,11 @@ oauth.addMember({
 */
 ```
 
-#### generateAuthUrl
+### `generateAuthUrl`
 
 Dynamically generate an OAuth2 URL.
 
-Only takes an object with the following properties:
+Takes an object with the following properties:
 
 `clientId`: Your application's client id. Can be omitted if provided on the client constructor.
 
@@ -315,6 +315,6 @@ console.log(url);
 
 ```
 
-### Contributing
+# Contributing
 
 All contributions are welcome.

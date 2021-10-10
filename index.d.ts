@@ -112,6 +112,11 @@ declare class OAuth extends EventEmitter {
 	getUser(access_token: string): Promise<OAuth.User>;
 	getUserGuilds(access_token: string): Promise<OAuth.PartialGuild[]>;
 	getUserConnections(access_token: string): Promise<OAuth.Connection[]>;
+	getMemberRolesForGuild(opts: {
+		userId: string,
+		guildId: string,
+		botToken: string,
+	}): Promise<OAuth.Member>;
 	addMember(opts: {
 		deaf?: boolean,
 		mute?: boolean,

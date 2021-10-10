@@ -124,7 +124,7 @@ declare class OAuth extends EventEmitter {
 		nickname?: string,
 		userId: string,
 		guildId: string,
-		botToken: string,
+		botToken?: string,
 		accessToken: string,
 	}): Promise<OAuth.Member>;
 	generateAuthUrl(opts: {

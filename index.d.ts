@@ -140,6 +140,7 @@ declare class OAuth extends EventEmitter {
 		botToken: string,
 		accessToken: string,
 	}): Promise<OAuth.Member>;
+	getGuildMember(access_token: string, guildId: string): Promise<OAuth.Member>
 	generateAuthUrl(opts: {
 		scope: string[] | string,
 		state?: string,

@@ -280,7 +280,51 @@ oauth.addMember({
 */
 ```
 
-### `generateAuthUrl`
+### `getGuildMember(access_token, guildId)`
+
+Get the member object in a guild the user is in.
+
+`access_token`: The user access token.
+
+`guildId`: The ID of the guild to get the member object from.
+
+Returns a member object.
+
+```js
+const DiscordOauth2 = require("discord-oauth2");
+const oauth = new DiscordOauth2();
+
+const access_token = "6qrZcUqja7812RVdnEKjpzOL4CvHBFG";
+const guildId = "216488324594438692";
+
+oauth.getGuildMember(access_token, guildId).then(console.log);
+
+/*
+{
+	roles: [
+		'3812761565259673315',
+	],
+	nick: 'my nickname',
+	avatar: null,
+	premium_since: null,
+	joined_at: '2017-02-15T12:06:21.285000+00:00',
+	is_pending: false,
+	pending: false,
+	communication_disabled_until: null,
+	user: {
+		id: '462551172942746558',
+		username: 'some username',
+		avatar: '5282b6a9haac8ada65d6997d88f734k5',
+		discriminator: '2142',
+		public_flags: 32
+	},
+	mute: false,
+	deaf: false
+}
+*/
+```
+
+### `generateAuthUrl(object)`
 
 Dynamically generate an OAuth2 URL.
 

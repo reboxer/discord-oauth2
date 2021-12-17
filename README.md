@@ -49,9 +49,9 @@ There are only two events, `debug` and `warn`.
 
 # Methods
 
-### `tokenRequest()`
+### `tokenRequest(object)`
 
-Only takes an object with the following properties:
+Takes an object with the following properties:
 
 `clientId`: Your application's client id. Can be omitted if provided on the client constructor.
 
@@ -117,9 +117,11 @@ oauth.tokenRequest({
 */
 ```
 
-### `revokeToken()`
+### `revokeToken(access_token, credentials)`
 
-Takes two parameters, the first one is the access_token from the user, the second is a Base64 encoding of the UTF-8 encoded credentials string of your application.
+`access_token`: The access token to revoke.
+
+`credentials`: The base64 encoded credentials string of your application.
 
 Returns a promise which resolves in an empty object if successful.
 
@@ -137,11 +139,13 @@ const credentials = Buffer.from(`${clientID}:${client_secret}`).toString("base64
 oauth.revokeToken(access_token, credentials).then(console.log); // {}
 ```
 
-### `getUser()`
+### `getUser(access_token)`
 
-Only takes one parameter which is the user's access token.
+`access_token`: The user's access token.
 
-Returns the [user](https://discord.com/developers/docs/resources/user#user-object) object of the requester's account, this requires the `identify` scope, which will return the object without an email, and optionally the `email` scope, which returns the object with an email.
+Requires the `identify` scope. Include the `email` scope if you want to get the user's email.
+
+Returns the [user](https://discord.com/developers/docs/resources/user#user-object) object of the requester's account.
 
 ```js
 const DiscordOauth2 = require("discord-oauth2");
@@ -163,11 +167,13 @@ oauth.getUser(access_token).then(console.log);
 */
 ```
 
-### `getUserGuilds()`
+### `getUserGuilds(access_token)`
 
-Only takes one parameter which is the user's access token.
+`access_token`: The user's access token.
 
-Returns a list of partial [guild](https://discord.com/developers/docs/resources/guild#guild-object) objects the current user is a member of. Requires the `guilds` scope.
+Requires the `guilds` scope.
+
+Returns a list of partial [guild](https://discord.com/developers/docs/resources/guild#guild-object) objects the current user is a member of.
 
 ```js
 const DiscordOauth2 = require("discord-oauth2");
@@ -188,11 +194,13 @@ oauth.getUserGuilds(access_token).then(console.log);
 */
 ```
 
-### `getUserConnections()`
+### `getUserConnections(access_token)`
 
-Only takes one parameter which is the user's access token.
+`access_token`: The user's access token.
 
-Returns a list of [connection](https://discord.com/developers/docs/resources/user#connection-object) objects. Requires the `connections` OAuth2 scope.
+Requires the `connections` OAuth2 scope.
+
+Returns a list of [connection](https://discord.com/developers/docs/resources/user#connection-object) objects.
 
 ```js
 const DiscordOauth2 = require("discord-oauth2");
@@ -212,11 +220,11 @@ oauth.getUserConnections(access_token).then(console.log);
 */
 ```
 
-### `addMember()`
+### `addMember(object)`
 
-Force join a user to a guild (server).
+Force join a user to a guild.
 
-Takes an object with the following properties:
+Takes an object with the following properties (required):
 
 `accessToken`: The user access token.
 
@@ -226,7 +234,7 @@ Takes an object with the following properties:
 
 `userId`: The ID of the user to be added to the guild.
 
-Optional properties (the above ones are required):
+Optional:
 
 `nickname`: Value to set users nickname to.
 

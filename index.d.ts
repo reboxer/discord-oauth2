@@ -6,7 +6,9 @@ declare namespace OAuth {
 		username: string;
 		discriminator: string;
 		avatar: string | null | undefined;
-		mfa_enabled?: true;
+		mfa_enabled?: boolean;
+		banner?: string | null | undefined;
+		accent_color?: string | null | undefined;
 		locale?: string;
 		verified?: boolean;
 		email?: string | null | undefined;
@@ -23,6 +25,9 @@ declare namespace OAuth {
 		premium_since?: number | null | undefined;
 		deaf: boolean;
 		mute: boolean;
+		pending?: boolean;
+		is_pending?: boolean;
+		communication_disabled_until?: string | null;
 	}
 
 	// This is not accurate as discord sends a partial object
@@ -74,6 +79,7 @@ declare namespace OAuth {
 		expires_in: number;
 		refresh_token: string;
 		scope: string;
+		webhook?: Webhook;
 	}
 
 	export interface PartialGuild {
@@ -84,6 +90,18 @@ declare namespace OAuth {
 		permissions?: number;
 		features: string[];
 		permissions_new?: string;
+	}
+
+	export interface Webhook {
+		type: boolean;
+		id: string;
+		name: string;
+		avatar: string | null | undefined;
+		channel_id: string;
+		guild_id: string;
+		application_id: string;
+		token: string;
+		url: string;
 	}
 }
 

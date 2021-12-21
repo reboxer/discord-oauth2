@@ -7,6 +7,7 @@
 		"ecmaVersion": 2020
 	},
 	"extends": "eslint:recommended",
+	"ignorePatterns": ["lib/eris"],
 	"rules": {
 		"semi": "error",
 		"no-var": "error",
@@ -17,16 +18,13 @@
 		"brace-style": ["error", "stroustrup"],
 		"comma-dangle": ["error", "always-multiline"],
 		"object-curly-spacing": ["error", "always"],
-
 		"quotes": ["error", "double", {
 			"allowTemplateLiterals": true
 		}],
-
 		"indent": ["error", "tab", {
 			"SwitchCase": 1,
 			"flatTernaryExpressions": true
 		}],
-
 		"object-curly-newline": ["error", {
 			"ExportDeclaration": "never",
 			"ImportDeclaration": "always"

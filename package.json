@@ -4,7 +4,8 @@
   "description": "Easily interact with discord's oauth2 API",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ext .js ./"
+    "lint": "prettier-eslint ./**/*.js --list-different",
+    "fix": "prettier-eslint ./**/*.js --write"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
   },
   "homepage": "https://github.com/reboxer/discord-oauth2#readme",
   "devDependencies": {
-    "eslint": "7.32.0"
+    "eslint": "7.32.0",
+    "prettier": "^2.5.1",
+    "prettier-eslint-cli": "^5.0.1"
   }
 }

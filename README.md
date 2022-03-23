@@ -16,22 +16,21 @@ One parameter is passed to the class constructor:
 
 ### `Options`
 
-Since the module uses a modified version of [Eris](https://github.com/abalabahaha/eris) request handler, it takes the same options, all of them default to the default Eris Client options if no options are passed.
+Since the module uses a modified version of [Eris](https://github.com/abalabahaha/eris)'s request handler, it takes the same options, all of them default to the default Eris REST options if no options are passed.
 
 Request handler options:
 ```
+agent: A HTTPS Agent used to proxy requests
+
 requestTimeout: A number of milliseconds before requests are considered timed out.
 
 latencyThreshold: The average request latency at which the RequestHandler will start emitting latency errors.
 
 ratelimiterOffset: A number of milliseconds to offset the ratelimit timing calculations by.
-
 ```
 
 Others, you can pass these options to the class constructor so you don't have to pass them each time you call a function:
 ```
-version: The Discord API version to use. Defaults to "v7".
-
 clientId: Your application's client id.
 
 clientSecret: Your application's client secret.
@@ -83,7 +82,7 @@ oauth.tokenRequest({
 	code: "query code",
 	scope: "identify guilds",
 	grantType: "authorization_code",
-	
+
 	redirectUri: "http://localhost/callback",
 }).then(console.log)
 ```
@@ -155,14 +154,14 @@ const access_token = "6qrZcUqja7812RVdnEKjpzOL4CvHBFG";
 
 oauth.getUser(access_token).then(console.log);
 /*
-	{ 
+	{
 		username: '1337 Krew',
 		locale: 'en-US',
 		mfa_enabled: true,
 		flags: 128,
 		avatar: '8342729096ea3675442027381ff50dfe',
 		discriminator: '4421',
-		id: '80351110224678912' 
+		id: '80351110224678912'
 	}
 */
 ```

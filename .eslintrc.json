@@ -7,7 +7,6 @@
 		"ecmaVersion": 2020
 	},
 	"extends": "eslint:recommended",
-	"ignorePatterns": ["lib/eris"],
 	"rules": {
 		"semi": "error",
 		"no-var": "error",

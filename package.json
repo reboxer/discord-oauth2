@@ -24,8 +24,7 @@
   },
   "homepage": "https://github.com/reboxer/discord-oauth2#readme",
   "devDependencies": {
-    "eslint": "7.32.0",
-    "prettier": "^2.5.1",
-    "prettier-eslint-cli": "^5.0.1"
+    "eslint": "^8.24.0",
+    "prettier-eslint-cli": "^7.1.0"
   }
 }

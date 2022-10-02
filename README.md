@@ -101,7 +101,6 @@ oauth.tokenRequest({
 	// clientId, clientSecret and redirectUri are omitted, as they were already set on the class constructor
 	refreshToken: "D43f5y0ahjqew82jZ4NViEr2YafMKhue",
 	grantType: "refresh_token",
-	scope: ["identify", "guilds"],
 });
 
 // On successful request both requesting and refreshing an access token return the same object

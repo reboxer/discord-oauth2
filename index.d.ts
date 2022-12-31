@@ -1,4 +1,5 @@
 import { EventEmitter } from "events";
+import { IncomingMessage, ClientRequest, IncomingHttpHeaders } from "http";
 
 declare namespace OAuth {
 	export interface User {
@@ -47,7 +48,7 @@ declare namespace OAuth {
 			name: string;
 		};
 		synced_at: number;
-		subscriber_count: number;	
+		subscriber_count: number;
 		revoked: boolean;
 		application?: Application;
 	}
@@ -103,54 +104,94 @@ declare namespace OAuth {
 		token: string;
 		url: string;
 	}
+
+	export interface HTTPResponse {
+		code: number;
+		message: string;
+	}
+
+	export class DiscordHTTPError extends Error {
+		code: number;
+		headers: IncomingHttpHeaders;
+		name: "DiscordHTTPError";
+		req: ClientRequest;
+		res: IncomingMessage;
+		response: HTTPResponse;
+		constructor(
+			req: ClientRequest,
+			res: IncomingMessage,
+			response: HTTPResponse,
+			stack: string,
+		);
+		flattenErrors(errors: HTTPResponse, keyPrefix?: string): string[];
+	}
+
+	export class DiscordRESTError extends Error {
+		code: number;
+		headers: IncomingHttpHeaders;
+		name: string;
+		req: ClientRequest;
+		res: IncomingMessage;
+		response: HTTPResponse;
+		constructor(
+			req: ClientRequest,
+			res: IncomingMessage,
+			response: HTTPResponse,
+			stack: string,
+		);
+		flattenErrors(errors: HTTPResponse, keyPrefix?: string): string[];
+	}
 }
 
 declare class OAuth extends EventEmitter {
 	constructor(opts?: {
-		version?: string,
-		clientId?: string,
-		redirectUri?: string,
-		credentials?: string,
-		clientSecret?: string,
-		requestTimeout?: number,
-		latencyThreshold?: number,
-		ratelimiterOffset?: number,
+		version?: string;
+		clientId?: string;
+		redirectUri?: string;
+		credentials?: string;
+		clientSecret?: string;
+		requestTimeout?: number;
+		latencyThreshold?: number;
+		ratelimiterOffset?: number;
 	});
 	on(event: "debug" | "warn", listener: (message: string) => void): this;
 	tokenRequest(opts: {
-		code?: string,
-		scope: string[] | string,
-		clientId?: string,
-		grantType: "authorization_code" | "refresh_token",
-		redirectUri?: string,
-		refreshToken?: string,
-		clientSecret?: string,
+		code?: string;
+		scope: string[] | string;
+		clientId?: string;
+		grantType: "authorization_code" | "refresh_token";
+		redirectUri?: string;
+		refreshToken?: string;
+		clientSecret?: string;
 	}): Promise<OAuth.TokenRequestResult>;
 	revokeToken(access_token: string, credentials?: string): Promise<string>;
 	getUser(access_token: string): Promise<OAuth.User>;
 	getUserGuilds(access_token: string): Promise<OAuth.PartialGuild[]>;
 	getUserConnections(access_token: string): Promise<OAuth.Connection[]>;
 	addMember(opts: {
-		deaf?: boolean,
-		mute?: boolean,
-		roles?: string[],
-		nickname?: string,
-		userId: string,
-		guildId: string,
-		botToken: string,
-		accessToken: string,
+		deaf?: boolean;
+		mute?: boolean;
+		roles?: string[];
+		nickname?: string;
+		userId: string;
+		guildId: string;
+		botToken: string;
+		accessToken: string;
 	}): Promise<OAuth.Member>;
-	getGuildMember(access_token: string, guildId: string): Promise<OAuth.Member>
+	getGuildMember(
+		access_token: string,
+		guildId: string,
+	): Promise<OAuth.Member>;
 	generateAuthUrl(opts: {
-		scope: string[] | string,
-		state?: string,
-		clientId?: string,
-		prompt?: "consent" | "none",
-		redirectUri?: string,
-		responseType?: "code" | "token",
-		permissions?: number,
-		guildId?: string,
-		disableGuildSelect?: boolean,
+		scope: string[] | string;
+		state?: string;
+		clientId?: string;
+		prompt?: "consent" | "none";
+		redirectUri?: string;
+		responseType?: "code" | "token";
+		permissions?: number;
+		guildId?: string;
+		disableGuildSelect?: boolean;
 	}): string;
 }
 export = OAuth;

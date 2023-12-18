@@ -1,5 +1,5 @@
 import { EventEmitter } from "events";
-import { IncomingMessage, ClientRequest, IncomingHttpHeaders } from "http";
+import { ClientRequest, IncomingHttpHeaders, IncomingMessage } from "http";
 
 declare namespace OAuth {
 	export interface User {
@@ -88,9 +88,8 @@ declare namespace OAuth {
 		name: string;
 		icon: string | null | undefined;
 		owner?: boolean;
-		permissions?: number;
+		permissions?: string;
 		features: string[];
-		permissions_new?: string;
 	}
 
 	export interface Webhook {

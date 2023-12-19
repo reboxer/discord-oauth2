@@ -165,9 +165,19 @@ oauth.getUser(access_token).then(console.log);
 */
 ```
 
-### `getUserGuilds(access_token)`
+### `getUserGuilds(access_token, object)`
 
 `access_token`: The user's access token.
+
+Options:
+
+`before`: Get guilds before this guild ID.
+
+`after`: Get guilds after this guild ID.
+
+`limit`: Max number of guilds to return (1-200).
+
+`withCounts`: Include approximate member and presence counts in response.
 
 Requires the `guilds` scope.
 

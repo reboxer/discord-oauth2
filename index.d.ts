@@ -90,6 +90,8 @@ declare namespace OAuth {
 		owner?: boolean;
 		permissions?: string;
 		features: string[];
+		approximate_member_count?: number;
+		approximate_presence_count?: number;
 	}
 
 	export interface Webhook {
@@ -165,7 +167,12 @@ declare class OAuth extends EventEmitter {
 	}): Promise<OAuth.TokenRequestResult>;
 	revokeToken(access_token: string, credentials?: string): Promise<string>;
 	getUser(access_token: string): Promise<OAuth.User>;
-	getUserGuilds(access_token: string): Promise<OAuth.PartialGuild[]>;
+	getUserGuilds(access_token: string, opts?: {
+		before?: string;
+		after?: string;
+		limit?: number;
+		withCounts?: boolean;
+	}): Promise<OAuth.PartialGuild[]>;
 	getUserConnections(access_token: string): Promise<OAuth.Connection[]>;
 	addMember(opts: {
 		deaf?: boolean;

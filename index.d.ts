@@ -5,6 +5,7 @@ declare namespace OAuth {
 	export interface User {
 		id: string;
 		username: string;
+		global_name: string;
 		discriminator: string;
 		avatar: string | null | undefined;
 		mfa_enabled?: boolean;
